@@ -4,6 +4,7 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { baseRateLimitOptions } from "./config/rateLimit.config.js";
 import contactRouter from "./routers/contact.route.js";
+import cvRouter from "./routers/cv.routes.js";
 
 const app = express();
 app.set("trust proxy", 1);
@@ -34,5 +35,6 @@ app.get("/health", (_req, res) => {
 });
 
 app.use("/api/v1/contact", contactLimit, contactRouter);
+app.use("/api/v1/cv", cvRouter);
 
 export default app;
